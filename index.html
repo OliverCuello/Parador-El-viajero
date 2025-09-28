@@ -310,7 +310,7 @@
               <div class="footer-badge" aria-hidden="true">Horario: 6:00 — 22:00</div>
               <div class="footer-badge">Pedidos: <a href="https://wa.me/18096148338" target="_blank" style="text-decoration:underline;color:#fff">WhatsApp</a></div>
             </div>
-            <div style="margin-top:6px" class="small">Tel: +1 809-614-8338 · Email: <a href="mailto:info@paradorelviajero.com">info@paradorelviajero.com</a></div>
+            <div style="margin-top:6px" class="small">Tel: +1 809-614-8338 · Email: <a href="olivercuello2001@gmail.com">olivercuello2001@gmail.com</a></div>
             <div class="small">Dirección: C. Orlando Martínez</div>
           </div>
         </div>
@@ -418,38 +418,37 @@
     });
 
     // Manejar envío del formulario
-    orderForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+orderForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-      const nombre = document.getElementById('clienteNombre').value.trim();
-      const telefono = document.getElementById('clienteTelefono').value.trim();
-      const pedido = document.getElementById('pedidoDetalle').value.trim();
-      const metodo = document.getElementById('metodoEnvio').value;
+  const nombre = document.getElementById('clienteNombre').value.trim();
+  const telefono = document.getElementById('clienteTelefono').value.trim();
+  const pedido = document.getElementById('pedidoDetalle').value.trim();
+  const metodo = document.getElementById('metodoEnvio').value;
 
-      if (!nombre || !telefono || !pedido) {
-        alert('Por favor completa todos los campos.');
-        return;
-      }
+  if (!nombre || !telefono || !pedido) {
+    alert('Por favor completa todos los campos.');
+    return;
+  }
 
-      const businessNumber = '18096148338'; 
-      const text = `Pedido desde sitio web%0ANombre: ${encodeURIComponent(nombre)}%0ATeléfono: ${encodeURIComponent(telefono)}%0APedido: ${encodeURIComponent(pedido)}`;
+  const businessNumber = '18096148338'; 
+  const text = `Pedido desde sitio web%0ANombre: ${encodeURIComponent(nombre)}%0ATeléfono: ${encodeURIComponent(telefono)}%0APedido: ${encodeURIComponent(pedido)}`;
 
-      if (metodo === 'whatsapp') {
-        // Abrir WhatsApp
-        const waUrl = `https://wa.me/${businessNumber}?text=${text}`;
-        window.open(waUrl, '_blank');
-      } else {
-        
-        const to = 'info@paradorelviajero.com';
-        const subject = encodeURIComponent('Nuevo pedido desde el sitio');
-        const body = `Nombre: ${nombre}\nTeléfono: ${telefono}\nPedido:\n${pedido}`;
-        window.location.href = `mailto:${to}?subject=${subject}&body=${encodeURIComponent(body)}`;
-      }
+  if (metodo === 'whatsapp') {
+    // Abrir WhatsApp
+    const waUrl = `https://wa.me/${businessNumber}?text=${text}`;
+    window.open(waUrl, '_blank');
+  } else {
+    // Enviar por email a olivercuello2001@gmail.com
+    const to = 'olivercuello2001@gmail.com';
+    const subject = encodeURIComponent('Nuevo pedido desde el sitio');
+    const body = `Nombre: ${nombre}\nTeléfono: ${telefono}\nPedido:\n${pedido}`;
+    window.location.href = `mailto:${to}?subject=${subject}&body=${encodeURIComponent(body)}`;
+  }
 
-      
-      closeModal();
-      orderForm.reset();
-    });
+  closeModal();
+  orderForm.reset();
+});
   </script>
 </body>
 </html>
